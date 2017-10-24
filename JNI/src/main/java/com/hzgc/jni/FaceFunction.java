@@ -25,8 +25,8 @@ public class FaceFunction {
                 int[] rgbArray = new int[height * width * 3];
                 for (int h = 0; h < height; h++) {
                     for (int w = 0; w < width; w++) {
-                        int pixel = faceImage.getRGB(w, h);
-                        rgbArray[h * width * 3 + w * 3] = (pixel & 0xff0000) >> 16;
+                        int pixel = faceImage.getRGB(w, h);//RGB颜色模型
+                        rgbArray[h * width * 3 + w * 3] = (pixel & 0xff0000) >> 16;//0xff0000 红色
                         rgbArray[h * width * 3 + w * 3 + 1] = (pixel & 0xff00) >> 8;
                         rgbArray[h * width * 3 + w * 3 + 2] = (pixel & 0xff);
                     }
@@ -72,7 +72,7 @@ public class FaceFunction {
                     int[] rgbArray = new int[height * width * 3];
                     for (int h = 0; h < height; h++) {
                         for (int w = 0; w < width; w++) {
-                            int pixel = image.getRGB(w, h);
+                            int pixel = image.getRGB(w, h);// 下面三行代码将一个数字转换为RGB数字
                             rgbArray[h * width * 3 + w * 3] = (pixel & 0xff0000) >> 16;
                             rgbArray[h * width * 3 + w * 3 + 1] = (pixel & 0xff00) >> 8;
                             rgbArray[h * width * 3 + w * 3 + 2] = (pixel & 0xff);
@@ -185,13 +185,13 @@ public class FaceFunction {
         double historyFeatureMultiple = 0;
         for (int i = 0; i < currentFeature.length; i++) {
             similarityDegree = similarityDegree + currentFeature[i] * historyFeature[i];
-            currentFeatureMultiple = currentFeatureMultiple + Math.pow(currentFeature[i], 2);
+            currentFeatureMultiple = currentFeatureMultiple + Math.pow(currentFeature[i], 2);//pow 返回currentFeature[i] 平方
             historyFeatureMultiple = historyFeatureMultiple + Math.pow(historyFeature[i], 2);
         }
 
-        double tempSim = similarityDegree / Math.sqrt(currentFeatureMultiple) / Math.sqrt(historyFeatureMultiple);
-        double actualValue = new BigDecimal((0.5 + (tempSim / 2)) * 100).
-                setScale(2, BigDecimal.ROUND_HALF_UP).
+        double tempSim = similarityDegree / Math.sqrt(currentFeatureMultiple) / Math.sqrt(historyFeatureMultiple);//sqrt 平方根 余弦相似度
+        double actualValue = new BigDecimal((0.5 + (tempSim / 2)) * 100).//余弦相似度表示为cosineSIM=0.5cosθ+0.5
+                setScale(2, BigDecimal.ROUND_HALF_UP).//ROUND_HALF_UP=4 保留两位小数四舍五入
                 doubleValue();
         if (actualValue >= 100) {
             return 100;

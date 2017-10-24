@@ -105,7 +105,7 @@ public class LocalSTOR extends AbstractCommand {
             boolean failure = false;
             OutputStream outStream = null;
             try {
-                outStream = file.createOutputStream(skipLen);
+                outStream = file.createOutputStream(skipLen);//get state variable long skipLen = session.getFileOffset();
                 ByteArrayOutputStream baos = null;
                 ByteArrayInputStream bais = null;
                 long transSz;
