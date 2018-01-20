@@ -27,7 +27,7 @@ abstract class AbstractLogWrite implements LogWriter {
      * @param conf ReceiverConf对象
      * @param queueID 当前队列ID
      */
-    AbstractLogWrite(CommonConf conf, String queueID) {
+    AbstractLogWrite(CommonConf conf, String queueID, long count) {
     }
 
     public String getQueueID() {

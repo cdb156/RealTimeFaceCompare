@@ -12,17 +12,16 @@ public class ReceiverImpl implements Receiver {
     private BlockingQueue<LogEvent> queue;
     private LogWriter receiveWriter;
     private String queueID;
-    public ReceiverImpl() {
-    }
 
-    public ReceiverImpl(CommonConf conf, String queueID) {
+    public ReceiverImpl(CommonConf conf, String queueID, long count) {
         this.queueID = queueID;
-        this.queue = new ArrayBlockingQueue<LogEvent>(conf.getCapacity());
-        this.receiveWriter = new DataReceiveLogWriter(conf, queueID);
+        this.queue = new ArrayBlockingQueue<>(conf.getCapacity());
+        this.receiveWriter = new DataReceiveLogWriter(conf, queueID, count);
     }
 
     @Override
     public void putData(LogEvent event) {
+        receiveWriter.writeEvent(event);
         if (event != null) {
             try {
                 queue.put(new LogEvent());
@@ -33,16 +32,12 @@ public class ReceiverImpl implements Receiver {
     }
 
     @Override
-    public void registIntoContainer() {
-    }
-
-    @Override
-    public void startProcess() {
-
-    }
-
-    @Override
     public BlockingQueue<LogEvent> getQueue() {
         return this.queue;
+    }
+
+    @Override
+    public String getQueueID() {
+        return this.queueID;
     }
 }

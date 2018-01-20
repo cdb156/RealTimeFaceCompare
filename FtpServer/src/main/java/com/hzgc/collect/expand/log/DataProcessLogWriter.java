@@ -26,9 +26,8 @@ public class DataProcessLogWriter extends AbstractLogWrite {
      */
     private long count;
 
-    DataProcessLogWriter(CommonConf conf, String queueID, long count) {
-        super(conf, queueID);
-        this.count = count;
+    public DataProcessLogWriter(CommonConf conf, String queueID, long count) {
+        super(conf, queueID, count);
     }
 
     @Override

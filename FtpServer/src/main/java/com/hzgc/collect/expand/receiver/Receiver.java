@@ -13,17 +13,13 @@ public interface Receiver {
     public void putData(LogEvent data);
 
     /**
-     * 向RecvicerContainer注册Recvicer用来接收数据
-     */
-    public void registIntoContainer();
-
-    /**
-     * 开始处理数据
-     */
-    public void startProcess();
-
-    /**
      * 获取当前队列
      */
     public BlockingQueue<LogEvent> getQueue();
+
+    /**
+     * 获取当前队列ID
+     */
+    public String getQueueID();
+
 }

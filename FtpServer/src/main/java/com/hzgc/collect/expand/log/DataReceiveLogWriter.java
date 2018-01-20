@@ -16,14 +16,14 @@ public class DataReceiveLogWriter extends AbstractLogWrite {
      */
     private String receiveLogName;
 
-    public DataReceiveLogWriter(CommonConf conf, String queueID) {
-        super(conf, queueID);
-    }
-
     /**
      * 接收队列日志目录
      */
     private String receiveLogDir;
+
+    public DataReceiveLogWriter(CommonConf conf, String queueID, long count) {
+        super(conf, queueID, count);
+    }
 
     @Override
     public void writeEvent(LogEvent event) {
