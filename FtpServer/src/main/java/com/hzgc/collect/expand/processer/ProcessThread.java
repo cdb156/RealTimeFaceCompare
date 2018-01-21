@@ -21,6 +21,15 @@ public class ProcessThread implements Runnable {
     public void run() {
 //        while (queue.remove())
 //        writer.writeEvent();
+            while (true) {
+                try {
+                    LogEvent event = queue.take();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
     }
 
     public BlockingQueue<LogEvent> getQueue() {

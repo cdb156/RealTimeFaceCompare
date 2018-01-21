@@ -5,17 +5,20 @@ import com.hzgc.collect.expand.log.LogEvent;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ReceiverScheduler {
     private List<Receiver> container = new ArrayList<>();
     private CommonConf conf;
+    private ExecutorService pool;
 
     private ReceiverScheduler() {
-
     }
 
     public ReceiverScheduler(CommonConf conf) {
         this.conf = conf;
+        this.pool = Executors.newFixedThreadPool(conf.getReceiveNumber());
     }
 
     /**
@@ -31,7 +34,7 @@ public class ReceiverScheduler {
      *
      * @return 返回Recvicer对象
      */
-    private static Receiver getRecvicer() {
+    private Receiver getRecvicer() {
         return null;
     }
 

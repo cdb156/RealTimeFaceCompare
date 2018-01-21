@@ -9,10 +9,9 @@ public class Test {
         for (int i = 0; i < 100; i++) {
             queue.offer("test");
         }
-        for (int j = 0; j < 1001; j++) {
+        for (int j = 0; j < 100; j++) {
             try {
                 queue.take();
-                queue.
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

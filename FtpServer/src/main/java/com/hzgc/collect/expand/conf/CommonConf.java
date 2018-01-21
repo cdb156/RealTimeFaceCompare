@@ -38,6 +38,11 @@ public class CommonConf {
     private String processLogDir;
 
     /**
+     * 接收队列数据
+     */
+    private int receiveNumber;
+
+    /**
      * 默认加载类路径下的cluster-over-ftp.properties文件
      */
     public CommonConf() {
@@ -106,5 +111,13 @@ public class CommonConf {
 
     public void setProcessLogDir(String processLogDir) {
         this.processLogDir = processLogDir;
+    }
+
+    public int getReceiveNumber() {
+        return receiveNumber;
+    }
+
+    public void setReceiveNumber(int receiveNumber) {
+        this.receiveNumber = receiveNumber;
     }
 }
