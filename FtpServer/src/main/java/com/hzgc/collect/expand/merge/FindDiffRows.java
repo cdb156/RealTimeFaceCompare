@@ -13,7 +13,7 @@ import java.util.*;
  * getNotProRows：获取集合中未处理的所有行；
  * getAllDiffRows：获取集合中不同行；
  */
-class FindDiffRows {
+public class FindDiffRows {
     private Logger LOG = Logger.getLogger(FindDiffRows.class);
 
     /**
@@ -22,7 +22,7 @@ class FindDiffRows {
      * @param allRows 日志合并后的所有行
      * @return List对象  未处理数据的集合
      */
-    List<String> getNotProRows(List<String> allRows) {
+    public List<String> getNotProRows(List<String> allRows) {
         List<String> notProList = new ArrayList<>();
         if (allRows == null || allRows.size() == 0) {
             LOG.warn("The unionAllRows size is None");
@@ -71,7 +71,7 @@ class FindDiffRows {
      * @param allRows 合并后日志集合
      * @return List对象       返回合并后不同行的集合
      */
-    List<String> getAllDiffRows(List<String> allRows) {
+    public List<String> getAllDiffRows(List<String> allRows) {
         List<String> rows = new ArrayList<>();
         String row;
         if (allRows == null || allRows.size() == 0) {
